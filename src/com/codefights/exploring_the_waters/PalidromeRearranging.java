@@ -1,7 +1,5 @@
 package com.codefights.exploring_the_waters;
 
-import java.util.HashMap;
-
 public class PalidromeRearranging {
 
 	public static void main(String[] args) {
@@ -11,16 +9,24 @@ public class PalidromeRearranging {
 	}
 
 	static boolean palindromeRearranging(String s) {
-		char[] arr = s.toCharArray();
-		HashMap<Character, Integer> map = new HashMap<>();
-
-		for (int i = 0, c = 0; i < arr.length; i++) {
-			if (!map.containsKey(arr[i])) {
-				c = 0;
-			}
-			map.put(arr[i], ++c);
-		}
+		if (s.length() == 1) return true;
 		
+		StringBuffer sb = new StringBuffer(s);
+
+		for (int i = 0, j = 1; i < sb.length() && j < sb.length(); i++, j++) {
+			if (sb.charAt(i) == sb.charAt(j)) {
+				sb.insert(0, sb.charAt(i));
+				sb.insert(sb.length(), sb.charAt(j));
+				sb.deleteCharAt(i + 1);
+				sb.deleteCharAt(j);
+			}
+			
+			String reversed = new StringBuffer(sb).reverse().toString();
+			if (reversed.equals(sb.toString())) {
+				return true;
+			}
+		}
+
 		return false;
 	}
 
