@@ -1,6 +1,6 @@
 package com.codefights.exploring_the_waters;
 
-public class PalidromeRearranging {
+public class PalindromeRearranging {
 
 	public static void main(String[] args) {
 		String inputString = "aabb";
@@ -22,9 +22,8 @@ public class PalidromeRearranging {
 			}
 			
 			String reversed = new StringBuffer(sb).reverse().toString();
-			if (reversed.equals(sb.toString())) {
-				return true;
-			}
+			
+			if (reversed.equals(sb.toString())) return true;
 		}
 
 		return false;
